@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import SearchBar from './components/search_bar';
+import YouTubSearch from 'youtube-api-search';
 
-import App from './components/app';
-import reducers from './reducers';
+const API_KEY = 'AIzaSyCZttceDVlkCDFZGSsEcsr1JGkmm2CZ2ZA';
+YouTubSearch({ key: API_KEY, term: 'surfboard' }, function(data){
+  console.log(data);
+});
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+const App = () => {
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  )
+};
+
+ReactDOM.render(<App />, document.querySelector('.container'));
