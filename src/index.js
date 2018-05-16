@@ -4,7 +4,11 @@ import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 import YouTubSearch from 'youtube-api-search';
 import VideoList from './components/video_list';
-import VideoDetail from './components/video_details'
+import VideoDetail from './components/video_details';
+import SignUp from './components/signup';
+import Routes from './routes';
+import Nav from './nav';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const API_KEY = 'AIzaSyCZttceDVlkCDFZGSsEcsr1JGkmm2CZ2ZA';
 
@@ -34,11 +38,7 @@ class App extends Component {
 
     return (
       <div>
-        <SearchBar onSearchTermChange={videoSearch} />
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          onVideoSelect={selectedVideo => this.setState({selectedVideo}) }
-          videos={this.state.videos}/>
+        <Routes />
       </div>
     )
   }
